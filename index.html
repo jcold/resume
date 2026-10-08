@@ -88,7 +88,7 @@
       .head h1 { font-size: 2.6rem; letter-spacing: .08em; }
       section { margin-top: 18px; }
       h2 { letter-spacing: .18em; }
-      .job-head { flex-direction: column; align-items: flex-start; gap: 0; }
+      .job-head { flex-direction: column; align-items: flex-start; gap: 0;}
       .job-head h3 { flex: none; }
     }
   
@@ -99,7 +99,7 @@
       color: var(--accent); margin: 0 0 8px;
       display: flex; align-items: center; gap: 12px;
     }
-    h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+    h2::after { content: ""; flex: 1; height: 0; border-top: 1px dashed var(--rule); }
     p { margin: 0 0 6px; }
     strong { font-weight: 700; }
     .soft { color: var(--ink-soft); }
@@ -117,7 +117,7 @@
     /* jobs */
     .job { margin-top: 16px; }
     .job:first-of-type { margin-top: 4px; }
-    .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 20px; }
+    .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 20px; border-bottom: 1px solid var(--rule); }
     .job-head h3 { font-size: 1.45rem; font-weight: 700; margin: 0; min-width: 0; }
     .date { color: var(--ink-faint); font-size: 1.25rem; white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .03em; }
     .title { color: var(--accent); font-weight: 500; margin: 0 0 4px; }
@@ -183,7 +183,7 @@
   
     <section>
       <h2>简介</h2>
-      <p>2005 年起从事软件研发，做过广告平台、企业福利电商、移动广告和自主产品，多次从 0 组建技术团队。具备产品和技术双重视角，熟悉从<strong>需求理解、技术选型、架构设计、核心研发到部署维护、持续迭代</strong>的完整过程。近年大量采用 AI 协作开发，并依靠工程经验对 AI 的输出做判断、审查和调整，让 AI 成为效率工具，而不是简单依赖它生成代码。</p>
+      <p>2005 年起从事软件研发，做过广告平台、企业福利电商、移动广告和自主产品，多次从 0 组建技术团队。具备产品和技术双重视角，熟悉从需求理解、技术选型、架构设计、核心研发到部署维护、持续迭代的完整过程。近年大量采用 AI 协作开发，并依靠工程经验对 AI 的输出做判断、审查和调整，让 AI 成为效率工具，而不是简单依赖它生成代码。</p>
     </section>
   
     <section>
@@ -215,9 +215,9 @@
       <div class="job">
         <div class="job-head"><h3>Everkm</h3><span class="date">2021.02 – 至今</span></div>
         <div class="title">独立产品实践</div>
-        <p>2021 年起独立探索产品方向，围绕<strong>记录、知识管理、内容发布</strong>做产品实践，承担产品设计、技术架构、核心研发、跨平台实现、数据组织和长期维护的完整责任，同时持续实践 AI 协作开发。代表产品：</p>
+        <p>2021 年起独立探索产品方向，围绕记录、知识管理、内容发布做产品实践，承担产品设计、技术架构、核心研发、跨平台实现、数据组织和长期维护的完整责任，同时持续实践 AI 协作开发。代表产品：</p>
         <ul class="dash">
-          <li><strong>AboxNote</strong>　轻量 Markdown 笔记产品</li>
+          <li><strong>Abox Note</strong>　专为移动端深度优化的轻量级 Markdown 笔记产品</li>
           <li><strong>Everkm Publish</strong>　基于 Markdown 文件的内容管理与发布系统</li>
           <li><strong>DaoBox</strong>　本地 Markdown 文件知识库</li>
         </ul>
@@ -228,12 +228,12 @@
         <div class="job-head"><h3>深圳市爱关怀电子商务有限公司 / 星光物语（北京）电子商务有限公司</h3><span class="date">2015.05 – 2021.02</span></div>
         <div class="title">技术总监 · 技术合伙人</div>
         <p>负责技术团队组建和产品研发，参与产品规划、技术架构、核心研发和项目交付。</p>
-        <h4>企业福利与弹性福利平台</h4>
-        <p>构建企业福利分发及弹性福利商城：上游连接客户内部系统，中台负责运营管理，下游连接京东、苏宁易购、网易严选、淘宝淘心选等电商平台，同时支持第三方供应商和企业自有商品。覆盖<strong>商品、积分、订单、履约、对账、售后</strong>的完整业务流程。</p>
-        <h4>企业平台连接</h4>
+        <h4>※ 企业福利与弹性福利平台</h4>
+        <p>构建企业福利分发及弹性福利商城：上游连接客户内部系统，中台负责运营管理，下游连接京东、苏宁易购、网易严选、淘宝淘心选等电商平台，同时支持第三方供应商和企业自有商品。覆盖商品、积分、订单、履约、对账、售后的完整业务流程。</p>
+        <h4>※ 企业平台连接</h4>
         <p>打通蓝凌 OA、致远 OA、微信服务号、企业微信、钉钉，降低不同客户的系统接入和使用成本。</p>
-        <h4>交通银行总工会福利平台</h4>
-        <p>从<strong>方案、讲标、需求沟通</strong>开始参与，带领团队完成研发、驻场开发、私有化部署，以及二期优化和定制，完整走过从方案到交付的全过程。</p>
+        <h4>※ 交通银行总工会福利平台</h4>
+        <p>从方案、讲标、需求沟通开始参与，带领团队完成研发、驻场开发、私有化部署，以及二期优化和定制，完整走过从方案到交付的全过程。</p>
         <div class="stack"><b>技术</b>PHP / Java / Golang / Vue / TypeScript</div>
       </div>
   
@@ -265,7 +265,7 @@
       <div class="job">
         <div class="job-head"><h3>河南中铝信息有限公司</h3><span class="date">2005.03 – 2009.02</span></div>
         <div class="title">技术主管</div>
-        <p>公司早期加入，从 0 组建技术团队，负责中铝网及其他网络产品的研发与维护。随着业务发展，推动技术体系从 <strong>ASP → .NET → Linux / Apache / PHP / MySQL</strong> 持续演进，并解决业务和流量快速增长中出现的技术问题。</p>
+        <p>公司早期加入，从 0 组建技术团队，负责中铝网及其他网络产品的研发与维护。随着业务发展，推动技术体系从 ASP → .NET → Linux / Apache / PHP / MySQL 持续演进，并解决业务和流量快速增长中出现的技术问题。</p>
       </div>
     </section>
   
