@@ -1,11 +1,15 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-  <title>余广伟 简历</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:1.4rem -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+  <title>余广伟简历</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap">
   <style>
     /* Layout: single-column A4 sheet; hierarchy by type, weight and spacing only, no table-like grids.
        Serif (Songti-like) for name and section titles, sans (PingFang-like) for body. */
+    /* :root already sets border-box; inherit it so width:100% includes padding. */
+    *, *::before, *::after { box-sizing: inherit; }
+    html { font-size: 12px; } /* 1rem = 10px */
+
     :root {
       --paper: #ffffff;
       --ink: #1d2328;
@@ -32,11 +36,11 @@
     }
     .actions {
       max-width: 210mm; margin: 0 auto 12px;
-      display: flex; justify-content: flex-start; gap: 8px;
+      display: flex; justify-content: center; gap: 8px;
     }
     .actions button,
     .actions a {
-      font: inherit; font-size: 12.5px; line-height: 1;
+      font: inherit; font-size: 1.25rem; line-height: 1;
       color: var(--accent); background: var(--paper);
       border: 1px solid var(--rule); border-radius: 4px;
       padding: 7px 12px; text-decoration: none; cursor: pointer;
@@ -47,23 +51,51 @@
       width: 100%; max-width: 210mm; margin: 0 auto;
       background: var(--paper); color: var(--ink);
       padding: clamp(22px, 7vw, 17mm) clamp(20px, 8vw, 18mm);
-      font-size: 13.5px; line-height: 1.75;
+      font-size: 1.35rem; line-height: 1.75;
       box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 28px rgba(0,0,0,.12);
     }
   
     /* header */
     .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; }
-    .head h1 { font-family: var(--serif); font-weight: 700; font-size: 30px; line-height: 1.2; letter-spacing: .12em; margin: 0; }
+    .head h1 { font-family: var(--serif); font-weight: 700; font-size: 3rem; line-height: 1.2; letter-spacing: .12em; margin: 0; }
     .head .role { color: var(--accent); font-weight: 500; letter-spacing: .08em; margin-top: 2px; }
-    .contact { font-size: 12.5px; line-height: 1.7; color: var(--ink-soft); text-align: right; }
+    .contact { font-size: 1.25rem; line-height: 1.7; color: var(--ink-soft); text-align: right; }
     .contact span { white-space: nowrap; }
     .contact span + span::before { content: "·"; margin-inline: .6em; color: var(--ink-faint); }
-    @media (max-width: 560px) { .contact { text-align: left; } }
+
+    /* Narrow screens: full-bleed paper, no desk frame or action bar. */
+    @media (max-width: 800px) {
+      .actions { display: none; }
+      body {
+        background: var(--paper);
+        padding: 0;
+      }
+      .sheet {
+        max-width: none;
+        margin: 0;
+        box-shadow: none;
+        padding: 24px 20px 40px;
+        padding-left: max(20px, env(safe-area-inset-left, 0px));
+        padding-right: max(20px, env(safe-area-inset-right, 0px));
+      }
+      .contact { text-align: left; }
+      .head { align-items: flex-start; }
+      .job-head h3 { flex: 1 1 12em; }
+    }
+    @media (max-width: 480px) {
+      .sheet { padding: 20px 16px 36px; font-size: 1.45rem; line-height: 1.7; }
+      .head { flex-direction: column; gap: 6px; }
+      .head h1 { font-size: 2.6rem; letter-spacing: .08em; }
+      section { margin-top: 18px; }
+      h2 { letter-spacing: .18em; }
+      .job-head { flex-direction: column; align-items: flex-start; gap: 0; }
+      .job-head h3 { flex: none; }
+    }
   
     /* sections */
     section { margin-top: 22px; }
     h2 {
-      font-family: var(--serif); font-weight: 700; font-size: 14.5px; letter-spacing: .3em;
+      font-family: var(--serif); font-weight: 700; font-size: 1.45rem; letter-spacing: .3em;
       color: var(--accent); margin: 0 0 8px;
       display: flex; align-items: center; gap: 12px;
     }
@@ -86,11 +118,11 @@
     .job { margin-top: 16px; }
     .job:first-of-type { margin-top: 4px; }
     .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 20px; }
-    .job-head h3 { font-size: 14.5px; font-weight: 700; margin: 0; min-width: 0; }
-    .date { color: var(--ink-faint); font-size: 12.5px; white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .03em; }
+    .job-head h3 { font-size: 1.45rem; font-weight: 700; margin: 0; min-width: 0; }
+    .date { color: var(--ink-faint); font-size: 1.25rem; white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .03em; }
     .title { color: var(--accent); font-weight: 500; margin: 0 0 4px; }
-    h4 { font-size: 13.5px; font-weight: 700; margin: 8px 0 1px; }
-    .stack { font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
+    h4 { font-size: 1.35rem; font-weight: 700; margin: 8px 0 1px; }
+    .stack { font-size: 1.25rem; color: var(--ink-soft); margin-top: 4px; }
     .stack b { color: var(--accent); font-weight: 700; margin-right: .6em; letter-spacing: .05em; }
   
     /* Print: flat A4, no desk or sheet frame. Page indicator lives in the page margin. */
@@ -106,7 +138,7 @@
         @bottom-center {
           content: counter(page) "  /  " counter(pages);
           font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
-          font-size: 9pt;
+          font-size: 1.2rem;
           font-variant-numeric: tabular-nums;
           letter-spacing: .04em;
           color: #7b858c;
@@ -145,7 +177,7 @@
         <div class="role">产品与技术实践者</div>
       </div>
       <div class="contact">
-        <span>18062116379</span><span>job@dayu.me</span><span>武汉</span>
+        <span>18062116379</span><span>job@dayu.me</span><span>武汉</span><span>1983年9月</span>
       </div>
     </header>
   
@@ -160,7 +192,7 @@
         <li><span class="k">后端</span>Rust · Golang · PHP · Java</li>
         <li><span class="k">前端</span>Vue · React · SolidJS · TypeScript</li>
         <li><span class="k">客户端</span>Electron · Tauri · Flutter · Android · iOS</li>
-        <li><span class="k">其他</span>WASM · Markdown 解析与渲染 · Web 编辑器 · 数据同步 · Git</li>
+        <li><span class="k">其他</span>WASM · Markdown 解析与渲染 · Web 编辑器 · 异构数据同步 · Git</li>
       </ul>
       <p class="soft">技术栈不限于以上方向，会根据实际问题选择合适的方案。</p>
     </section>
