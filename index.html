@@ -1,0 +1,235 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>余广伟 简历</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap">
+<style>
+  /* Layout: single-column A4 sheet; hierarchy by type, weight and spacing only, no table-like grids.
+     Serif (Songti-like) for name and section titles, sans (PingFang-like) for body. */
+  :root {
+    --paper: #ffffff;
+    --ink: #1d2328;
+    --ink-soft: #4b555d;
+    --ink-faint: #7b858c;
+    --accent: #1f4f5e;
+    --rule: #d5dadd;
+    --desk: #e6e8ea;
+    --desk-fg: #4b555d;
+    --serif: "Noto Serif SC", "Songti SC", "STSong", serif;
+    --sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --desk: #16191c; --desk-fg: #a4adb3; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --desk: #16191c; --desk-fg: #a4adb3; color-scheme: dark; }
+
+  body {
+    background: var(--desk);
+    color: var(--ink);
+    font-family: var(--sans);
+    padding-inline: 16px;
+    padding-block: 24px 40px;
+  }
+  .note {
+    max-width: 210mm; margin: 0 auto 12px;
+    font-size: 12px; line-height: 1.6; color: var(--desk-fg);
+  }
+  .sheet {
+    width: 100%; max-width: 210mm; margin: 0 auto;
+    background: var(--paper); color: var(--ink);
+    padding: clamp(22px, 7vw, 17mm) clamp(20px, 8vw, 18mm);
+    font-size: 13.5px; line-height: 1.75;
+    box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 28px rgba(0,0,0,.12);
+  }
+
+  /* header */
+  .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; }
+  .head h1 { font-family: var(--serif); font-weight: 700; font-size: 30px; line-height: 1.2; letter-spacing: .12em; margin: 0; }
+  .head .role { color: var(--accent); font-weight: 500; letter-spacing: .08em; margin-top: 2px; }
+  .contact { font-size: 12.5px; line-height: 1.7; color: var(--ink-soft); text-align: right; }
+  .contact span { white-space: nowrap; }
+  .contact span + span::before { content: "·"; margin-inline: .6em; color: var(--ink-faint); }
+  @media (max-width: 560px) { .contact { text-align: left; } }
+
+  /* sections */
+  section { margin-top: 22px; }
+  h2 {
+    font-family: var(--serif); font-weight: 700; font-size: 14.5px; letter-spacing: .3em;
+    color: var(--accent); margin: 0 0 8px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  p { margin: 0 0 6px; }
+  strong { font-weight: 700; }
+  .soft { color: var(--ink-soft); }
+
+  /* skills as run-in lines */
+  .skills { margin: 0 0 8px; padding: 0; list-style: none; }
+  .skills li { margin: 0; }
+  .skills .k { color: var(--accent); font-weight: 700; margin-right: .9em; letter-spacing: .06em; }
+
+  /* bullets */
+  ul.dash { list-style: none; margin: 4px 0 6px; padding: 0; }
+  ul.dash li { position: relative; padding-left: 1.2em; margin-bottom: 2px; }
+  ul.dash li::before { content: ""; position: absolute; left: .1em; top: .95em; width: .55em; height: 1px; background: var(--accent); }
+
+  /* jobs */
+  .job { margin-top: 16px; }
+  .job:first-of-type { margin-top: 4px; }
+  .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 20px; }
+  .job-head h3 { font-size: 14.5px; font-weight: 700; margin: 0; min-width: 0; }
+  .date { color: var(--ink-faint); font-size: 12.5px; white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .03em; }
+  .title { color: var(--accent); font-weight: 500; margin: 0 0 4px; }
+  h4 { font-size: 13.5px; font-weight: 700; margin: 8px 0 1px; }
+  .stack { font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
+  .stack b { color: var(--accent); font-weight: 700; margin-right: .6em; letter-spacing: .05em; }
+
+  /* Print: flat A4, no desk or sheet frame. Page indicator lives in the page margin. */
+  @media print {
+    @page {
+      size: A4;
+      margin: 16mm 18mm 16mm;
+      @top-left { content: none; }
+      @top-center { content: none; }
+      @top-right { content: none; }
+      @bottom-left { content: none; }
+      @bottom-right { content: none; }
+      @bottom-center {
+        content: counter(page) "  /  " counter(pages);
+        font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+        font-size: 9pt;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: .04em;
+        color: #7b858c;
+      }
+    }
+    :root, :root[data-theme="dark"] { color-scheme: light; }
+    body {
+      background: #fff;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .note { display: none !important; }
+    .sheet {
+      max-width: none;
+      width: auto;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      background: #fff;
+    }
+    h2, h3, h4, .job-head { break-after: avoid; }
+    .job { break-inside: avoid; }
+  }
+</style>
+
+<p class="note">A4 版面预览。正文无表格结构，页边距约 17mm。确认内容和观感后再转为 Typst，PDF 分页在 Typst 里处理。</p>
+
+<main class="sheet">
+  <header class="head">
+    <div>
+      <h1>余广伟</h1>
+      <div class="role">产品与技术实践者</div>
+    </div>
+    <div class="contact">
+      <span>18062116379</span><span>job@dayu.me</span><span>武汉</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>简介</h2>
+    <p>2005 年起从事软件研发，做过广告平台、企业福利电商、移动广告和自主产品，多次从 0 组建技术团队。具备产品和技术双重视角，熟悉从<strong>需求理解、技术选型、架构设计、核心研发到部署维护、持续迭代</strong>的完整过程。近年大量采用 AI 协作开发，并依靠工程经验对 AI 的输出做判断、审查和调整，让 AI 成为效率工具，而不是简单依赖它生成代码。</p>
+  </section>
+
+  <section>
+    <h2>技术能力</h2>
+    <ul class="skills">
+      <li><span class="k">后端</span>Rust · Golang · PHP · Java</li>
+      <li><span class="k">前端</span>Vue · React · SolidJS · TypeScript</li>
+      <li><span class="k">客户端</span>Electron · Tauri · Flutter · Android · iOS</li>
+      <li><span class="k">其他</span>WASM · Markdown 解析与渲染 · Web 编辑器 · 数据同步 · Git</li>
+    </ul>
+    <p class="soft">技术栈不限于以上方向，会根据实际问题选择合适的方案。</p>
+  </section>
+
+  <section>
+    <h2>解决过的问题</h2>
+    <ul class="dash">
+      <li>随业务增长推动技术架构演进，处理规模扩大带来的性能、协作和交付问题</li>
+      <li>建设统一认证体系，解决多个平台之间的身份认证问题</li>
+      <li>建立统一开发环境，降低团队成员因基础环境差异产生的开发成本</li>
+      <li>负责复杂系统的架构设计和核心模块研发，也能接手已有系统并持续重构维护</li>
+      <li>面对客户定制、系统集成、私有化部署，从需求沟通参与到最终交付</li>
+      <li>在需求不明确或条件有限时，同时理解产品、业务和技术，把事情推到落地</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>工作经历</h2>
+
+    <div class="job">
+      <div class="job-head"><h3>Everkm</h3><span class="date">2021.02 – 至今</span></div>
+      <div class="title">独立产品实践</div>
+      <p>2021 年起独立探索产品方向，围绕<strong>记录、知识管理、内容发布</strong>做产品实践，承担产品设计、技术架构、核心研发、跨平台实现、数据组织和长期维护的完整责任，同时持续实践 AI 协作开发。代表产品：</p>
+      <ul class="dash">
+        <li><strong>AboxNote</strong>　轻量 Markdown 笔记产品</li>
+        <li><strong>Everkm Publish</strong>　基于 Markdown 文件的内容管理与发布系统</li>
+        <li><strong>DaoBox</strong>　本地 Markdown 文件知识库</li>
+      </ul>
+      <div class="stack"><b>技术</b>Rust / Vue / TypeScript / WASM / Flutter / Tauri / Electron / Markdown / Web 编辑器 / 数据同步</div>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><h3>深圳市爱关怀电子商务有限公司 / 星光物语（北京）电子商务有限公司</h3><span class="date">2015.05 – 2021.02</span></div>
+      <div class="title">技术总监 · 技术合伙人</div>
+      <p>负责技术团队组建和产品研发，参与产品规划、技术架构、核心研发和项目交付。</p>
+      <h4>企业福利与弹性福利平台</h4>
+      <p>构建企业福利分发及弹性福利商城：上游连接客户内部系统，中台负责运营管理，下游连接京东、苏宁易购、网易严选、淘宝淘心选等电商平台，同时支持第三方供应商和企业自有商品。覆盖<strong>商品、积分、订单、履约、对账、售后</strong>的完整业务流程。</p>
+      <h4>企业平台连接</h4>
+      <p>打通蓝凌 OA、致远 OA、微信服务号、企业微信、钉钉，降低不同客户的系统接入和使用成本。</p>
+      <h4>交通银行总工会福利平台</h4>
+      <p>从<strong>方案、讲标、需求沟通</strong>开始参与，带领团队完成研发、驻场开发、私有化部署，以及二期优化和定制，完整走过从方案到交付的全过程。</p>
+      <div class="stack"><b>技术</b>PHP / Java / Golang / Vue / TypeScript</div>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><h3>上海盒拓信息科技有限公司</h3><span class="date">2012.10 – 2015.03</span></div>
+      <div class="title">产品技术负责人 · 技术合伙人</div>
+      <p>负责移动广告交换及手机游戏相关产品的技术研发。</p>
+      <ul class="dash">
+        <li>从 0 组建技术团队，负责研发、测试、运维和项目管理</li>
+        <li>负责系统架构设计和核心技术问题的解决</li>
+        <li>参与 PHP Web、Java 服务端、Android / iOS 客户端的架构设计和核心代码研发</li>
+      </ul>
+      <div class="stack"><b>技术</b>PHP / Java / Android / iOS</div>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><h3>上海聚胜万合广告有限公司</h3><span class="date">2009.05 – 2012.09</span></div>
+      <div class="title">高级软件工程师</div>
+      <p>负责广告技术平台和基础研发体系建设。</p>
+      <ul class="dash">
+        <li>开发 PHP 内部基础库及轻量框架</li>
+        <li>开发中心身份认证系统（CAS），支持 LDAP、OAuth2 等认证授权方式，统一多个平台的身份认证</li>
+        <li>建设 PHP 云开发环境，解决团队开发环境不一致的问题，降低新人的环境配置成本</li>
+        <li>负责广告投放管理系统排期模块研发</li>
+      </ul>
+      <div class="stack"><b>技术</b>PHP / LDAP / OAuth2 / CAS</div>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><h3>河南中铝信息有限公司</h3><span class="date">2005.03 – 2009.02</span></div>
+      <div class="title">技术主管</div>
+      <p>公司早期加入，从 0 组建技术团队，负责中铝网及其他网络产品的研发与维护。随着业务发展，推动技术体系从 <strong>ASP → .NET → Linux / Apache / PHP / MySQL</strong> 持续演进，并解决业务和流量快速增长中出现的技术问题。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>合作意向</h2>
+    <p><strong>全职、远程、兼职均可。</strong>希望找到真正有研发需求、需要解决实际问题的团队或项目，无论是长期加入，还是具体的系统开发、维护、重构或阶段性工作，都可以从实际需求开始。</p>
+    <p>如果双方还需要进一步了解，可以先从远程或兼职开始，合作顺利再发展为长期合作或全职加入。先把事情做好，再决定最合适的合作方式。</p>
+  </section>
+</main>
+
+</body></html>
