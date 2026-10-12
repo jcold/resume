@@ -1,9 +1,19 @@
 import { For, ParentComponent, Show } from "solid-js";
 import resumeCss from "../assets/css/resume.css";
 
-const ACTIONS_HTML =
-  '<button type="button" onclick="window.print()">打印</button>' +
-  '<a href="/余广伟简历.pdf" download="余广伟简历.pdf">保存 PDF</a>';
+const PRINT_BUTTON =
+  '<button type="button" onclick="window.print()">打印</button>';
+
+/** 当前页所在目录，如 `/rust/`、`/rust/index.html` → `rust`。 */
+function sideDir(context: PageContext): string {
+  const raw =
+    context.page_path || context.post?.path || context.post?.url_path || "";
+  const parts = raw.split("/").filter(Boolean);
+  if (parts.length && /^index\.(md|html)$/i.test(parts[parts.length - 1])) {
+    parts.pop();
+  }
+  return parts.join("/");
+}
 
 const COPY_SCRIPT =
   "document.addEventListener('click',function(e){" +
@@ -25,6 +35,16 @@ export const RootLayout: ParentComponent<RootLayoutProps> = (props) => {
   const title = () =>
     props.title || props.context.post?.title || "余广伟简历";
   const sides = () => (props.sides || []).filter((side) => side.url_path);
+  const actionsHtml = () => {
+    const dir = sideDir(props.context);
+    const name = dir.split("/").pop() || "";
+    if (!name) return PRINT_BUTTON;
+    const file = `余广伟-${name}.pdf`;
+    return (
+      PRINT_BUTTON +
+      `<a href="${file}?__not_follow" download="${file}">保存 PDF</a>`
+    );
+  };
 
   return (
     <html lang={props.context.lang || "zh"}>
@@ -45,7 +65,7 @@ export const RootLayout: ParentComponent<RootLayoutProps> = (props) => {
         <script>{COPY_SCRIPT}</script>
       </head>
       <body>
-        <div class="actions" innerHTML={ACTIONS_HTML} />
+        <div class="actions" innerHTML={actionsHtml()} />
         <main class="sheet">{props.children}</main>
         <Show when={sides().length > 0}>
           <nav hidden>
