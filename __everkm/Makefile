@@ -15,6 +15,8 @@ theme:
 build: theme
 	@test -n "$(strip $(SIDES))" || { echo "no {side}/index.md"; exit 1; }
 	$(EVERKM) serve --work-dir .. --theme resume --export $(START_FLAGS)
+	cp ../index.html dist/
+	cp ../余广伟简历.pdf dist/
 
 # 遍历仓库子目录中的 index.html，用本机 Playwright 打印 PDF 到同目录：余广伟-{目录名}.pdf
 pdf:

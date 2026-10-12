@@ -1,6 +1,5 @@
 /archives
 .DS_Store
 __everkm/cache/
-__everkm/dist/
 __everkm/theme/resume/node_modules/
 /work/merged.md
