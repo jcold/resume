@@ -1,0 +1,11 @@
+name: resume
+version: 0.1.0
+author: dayu<dayu@dayu.me>
+repository: https://github.com/jcold/resume
+default_template: detail
+
+config:
+  site:
+    name: 余广伟简历
+    lang: zh
+    timezone: Asia/Shanghai

@@ -1,0 +1,228 @@
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:1.4rem -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+    /* Layout: single-column A4 sheet; hierarchy by type, weight and spacing only, no table-like grids.
+       Serif (Songti-like) for name and section titles, sans (PingFang-like) for body. */
+    /* :root already sets border-box; inherit it so width:100% includes padding. */
+    *, *::before, *::after { box-sizing: inherit; }
+    html { font-size: 12px; } /* 1rem = 10px */
+
+    :root {
+      --paper: #ffffff;
+      --ink: #1d2328;
+      --ink-soft: #4b555d;
+      --ink-faint: #7b858c;
+      --accent: #1f4f5e;
+      --rule: #d5dadd;
+      --desk: #e6e8ea;
+      --desk-fg: #4b555d;
+      --serif: "Noto Serif SC", "Songti SC", "STSong", serif;
+      --sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { --desk: #16191c; --desk-fg: #a4adb3; color-scheme: dark; }
+    }
+    :root[data-theme="dark"] { --desk: #16191c; --desk-fg: #a4adb3; color-scheme: dark; }
+  
+    body {
+      background: var(--desk);
+      color: var(--ink);
+      font-family: var(--sans);
+      padding-inline: 16px;
+      padding-block: 24px 40px;
+    }
+    .actions {
+      max-width: 210mm; margin: 0 auto 12px;
+      display: flex; justify-content: center; gap: 8px;
+    }
+    .actions button,
+    .actions a {
+      font: inherit; font-size: 1.25rem; line-height: 1;
+      color: var(--accent); background: var(--paper);
+      border: 1px solid var(--rule); border-radius: 4px;
+      padding: 7px 12px; text-decoration: none; cursor: pointer;
+    }
+    .actions button:hover,
+    .actions a:hover { border-color: var(--accent); }
+    .sheet {
+      width: 100%; max-width: 210mm; margin: 0 auto;
+      background: var(--paper); color: var(--ink);
+      padding: clamp(22px, 7vw, 17mm) clamp(20px, 8vw, 18mm);
+      font-size: 1.35rem; line-height: 1.75;
+      box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 28px rgba(0,0,0,.12);
+    }
+  
+    /* header */
+    .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; }
+    .head h1 { font-family: var(--serif); font-weight: 700; font-size: 3rem; line-height: 1.2; letter-spacing: .12em; margin: 0; }
+    .head .role { color: var(--accent); font-weight: 500; letter-spacing: .08em; margin-top: 2px; }
+    .contact { font-size: 1.25rem; line-height: 1.7; color: var(--ink-soft); text-align: right; }
+    .contact span { white-space: nowrap; }
+    .contact span + span::before { content: "·"; margin-inline: .6em; color: var(--ink-faint); }
+
+    /* Narrow screens: full-bleed paper, no desk frame or action bar. */
+    @media (max-width: 800px) {
+      .actions { display: none; }
+      body {
+        background: var(--paper);
+        padding: 0;
+      }
+      .sheet {
+        max-width: none;
+        margin: 0;
+        box-shadow: none;
+        padding: 24px 20px 40px;
+        padding-left: max(20px, env(safe-area-inset-left, 0px));
+        padding-right: max(20px, env(safe-area-inset-right, 0px));
+      }
+      .contact { text-align: left; }
+      .head { align-items: flex-start; }
+      .job-head h3 { flex: 1 1 12em; }
+    }
+    @media (max-width: 480px) {
+      .sheet { padding: 20px 16px 36px; font-size: 1.45rem; line-height: 1.7; }
+      .head { flex-direction: column; gap: 6px; }
+      .head h1 { font-size: 2.6rem; letter-spacing: .08em; }
+      section { margin-top: 18px; }
+      h2 { letter-spacing: .18em; }
+      .job-head { flex-direction: column; align-items: flex-start; gap: 0;}
+      .job-head h3 { flex: none; }
+    }
+  
+    /* sections */
+    section { margin-top: 22px; }
+    h2 {
+      font-family: var(--serif); font-weight: 700; font-size: 1.85rem; letter-spacing: .3em;
+      color: var(--accent); margin: 30px 0 8px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    h2::after { content: ""; flex: 1; height: 0; border-top: 1px dashed var(--rule); }
+    h2 + h3,
+    .md h2 + h3 { margin-top: 0; }
+    p { margin: 0 0 6px; }
+    strong { font-weight: 700; }
+    .soft { color: var(--ink-soft); }
+  
+    /* skills as run-in lines */
+    .skills { margin: 0 0 8px; padding: 0; list-style: none; }
+    .skills li { margin: 0; }
+    .skills .k { color: var(--accent); font-weight: 700; margin-right: .9em; letter-spacing: .06em; }
+  
+    /* bullets */
+    ul.dash { list-style: none; margin: 4px 0 6px; padding: 0; }
+    ul.dash li { position: relative; padding-left: 1.2em; margin-bottom: 2px; }
+    ul.dash li::before { content: ""; position: absolute; left: .1em; top: .95em; width: .55em; height: 1px; background: var(--accent); }
+  
+    /* jobs */
+    .job { margin-top: 16px; }
+    .job:first-of-type { margin-top: 4px; }
+    .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 20px; border-bottom: 1px solid var(--rule); }
+    .job-head h3 { font-size: 1.45rem; font-weight: 700; margin: 0; min-width: 0; }
+    .date { color: var(--ink-faint); font-size: 1.25rem; white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .03em; }
+    .title { color: var(--accent); font-weight: 500; margin: 0 0 4px; }
+    h4 { font-size: 1.35rem; font-weight: 700; margin: 8px 0 1px; }
+    .stack { font-size: 1.25rem; color: var(--ink-soft); margin-top: 4px; }
+    .stack b { color: var(--accent); font-weight: 700; margin-right: .6em; letter-spacing: .05em; }
+  
+    /* Print: flat A4, no desk or sheet frame. Page indicator lives in the page margin. */
+    @media print {
+      @page {
+        size: A4;
+        margin: 16mm 18mm 16mm;
+        @top-left { content: none; }
+        @top-center { content: none; }
+        @top-right { content: none; }
+        @bottom-left { content: none; }
+        @bottom-right { content: none; }
+        @bottom-center {
+          content: counter(page) "  /  " counter(pages);
+          font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+          font-size: 1.2rem;
+          font-variant-numeric: tabular-nums;
+          letter-spacing: .04em;
+          color: #7b858c;
+        }
+      }
+      :root, :root[data-theme="dark"] { color-scheme: light; }
+      body {
+        background: #fff;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .actions { display: none !important; }
+      .sheet {
+        max-width: none;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        background: #fff;
+      }
+      h2 { margin-top: 12px; }
+      h2, h3, h4, .job-head { break-after: avoid; }
+      .job { break-inside: avoid; }
+    }
+  
+    /* Markdown body: sheet chrome stays, this styles rendered {side} content. */
+    .md > :first-child { margin-top: 0; }
+    .md h1 {
+      font-family: var(--serif); font-weight: 700; font-size: 3rem; line-height: 1.2;
+      letter-spacing: .12em; margin: 0 0 2px;
+    }
+    /* {.meta} and {.contact} share one row on wide screens; both are real text. */
+    .md > div { display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: 24px; }
+    .md > div > * { flex: 1 0 100%; min-width: 0; }
+    .md .meta,
+    .md .contact { flex: 0 1 auto; width: auto; margin: 0 0 14px; }
+    .md .meta strong { color: var(--accent); font-weight: 500; letter-spacing: .08em; }
+    .md .contact { margin-left: auto; white-space: nowrap; }
+    .md .contact .copy {
+      position: relative; font-weight: 400; cursor: pointer;
+      padding: 0 3px; margin: 0 -3px; border-radius: 2px;
+    }
+    .md .contact .copy:hover { background: rgba(31, 79, 94, 0.08); }
+    .md .contact .copy:hover::before {
+      content: "点击可复制";
+      position: absolute;
+      left: 50%; bottom: calc(100% + 4px);
+      transform: translateX(-50%);
+      z-index: 1;
+      padding: 1px 6px;
+      font-size: 1.15rem; font-weight: 400; line-height: 1.5; letter-spacing: 0;
+      color: var(--ink-soft); background: var(--paper);
+      border: 1px solid var(--rule); border-radius: 3px;
+      white-space: nowrap; pointer-events: none;
+    }
+    .md .contact .copy[data-tip="已复制"] { visibility: hidden; }
+    .md .contact .copy[data-tip="已复制"]:hover::before { content: none; }
+    .md .contact .copy[data-tip="已复制"]::after {
+      content: "已复制";
+      visibility: visible;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--accent);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    @media (max-width: 800px) {
+      .md .meta,
+      .md .contact { flex-basis: 100%; margin-left: 0; white-space: normal; }
+    }
+    /* A4 is under 800px, so the narrow-screen rule above also matches print. */
+    @media print {
+      .md .meta,
+      .md .contact { flex-basis: auto; white-space: nowrap; }
+      .md .contact { margin-left: auto; }
+    }
+    .md h3 { font-size: 1.45rem; font-weight: 700; margin: 14px 0 2px; }
+    .md ul,
+    .md ol { margin: 4px 0 6px; padding-inline-start: 1.6em; }
+    .md ul { list-style: disc outside; }
+    .md ol { list-style: decimal outside; }
+    .md li { margin-bottom: 2px; }
+    .md hr { border: 0; border-top: 1px solid var(--rule); margin: 16px 0; }
+    .md a { color: var(--accent); }
+    @media (max-width: 480px) {
+      .md h1 { font-size: 2.6rem; letter-spacing: .08em; }
+    }
+  
