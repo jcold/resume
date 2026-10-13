@@ -166,15 +166,36 @@
     .md > :first-child { margin-top: 0; }
     .md h1 {
       font-family: var(--serif); font-weight: 700; font-size: 3rem; line-height: 1.2;
-      letter-spacing: .12em; margin: 0 0 2px;
+      letter-spacing: .12em; margin: 0 0 8px;
     }
-    /* {.meta} and {.contact} share one row on wide screens; both are real text. */
-    .md > div { display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: 24px; }
-    .md > div > * { flex: 1 0 100%; min-width: 0; }
-    .md .meta,
-    .md .contact { flex: 0 1 auto; width: auto; margin: 0 0 14px; }
+    /* h1 and {.contact} share the first row, both starting from the left.
+       The spare column keeps the rest of the sheet full width. */
+    .md {
+      display: grid;
+      grid-template-columns: auto auto minmax(0, 1fr);
+      column-gap: 24px;
+      align-items: start;
+      justify-content: start;
+    }
+    .md > h1 {
+      grid-column: 1;
+      grid-row: 1;
+      align-self: last baseline;
+    }
+    .md > div { display: contents; }
+    .md > div > * { grid-column: 1 / -1; min-width: 0; }
+    .md .meta { margin: 0 0 14px; }
     .md .meta strong { color: var(--accent); font-weight: 500; letter-spacing: .08em; }
-    .md .contact { margin-left: auto; white-space: nowrap; }
+    .md .contact {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: last baseline;
+      justify-self: start;
+      width: auto;
+      margin: 0 0 8px;
+      text-align: left;
+      white-space: nowrap;
+    }
     .md .contact .copy {
       position: relative; font-weight: 400; cursor: pointer;
       padding: 0 3px; margin: 0 -3px; border-radius: 2px;
@@ -204,15 +225,9 @@
       font-weight: 400;
       white-space: nowrap;
     }
-    @media (max-width: 800px) {
-      .md .meta,
-      .md .contact { flex-basis: 100%; margin-left: 0; white-space: normal; }
-    }
-    /* A4 is under 800px, so the narrow-screen rule above also matches print. */
+    /* A4 print is under 800px, but the name and contact stay on one row. */
     @media print {
-      .md .meta,
-      .md .contact { flex-basis: auto; white-space: nowrap; }
-      .md .contact { margin-left: auto; }
+      .md .contact { white-space: nowrap; }
     }
     .md h3 { font-size: 1.45rem; font-weight: 700; margin: 14px 0 2px; }
     .md ul,
@@ -223,6 +238,13 @@
     .md hr { border: 0; border-top: 1px solid var(--rule); margin: 16px 0; }
     .md a { color: var(--accent); }
     @media (max-width: 480px) {
+      .md { grid-template-columns: 1fr; }
       .md h1 { font-size: 2.6rem; letter-spacing: .08em; }
+      .md .contact {
+        grid-column: 1;
+        grid-row: auto;
+        white-space: normal;
+        text-align: left;
+      }
     }
   

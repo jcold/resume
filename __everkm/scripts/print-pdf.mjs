@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import { readdir } from "fs/promises";
+import { access, readdir } from "fs/promises";
 import { createRequire } from "module";
 import path from "path";
 import { pathToFileURL } from "url";
@@ -16,16 +16,28 @@ const { chromium } = createRequire(import.meta.url)(pkg);
 
 const SKIP_DIRS = new Set(["node_modules", ".git", "cache"]);
 
+// 只收 dist/<side>/index.html，跳过 dist/index.html 以及 dist 以外的页面。
 async function findIndexHtml(dir, acc) {
   const entries = await readdir(dir, { withFileTypes: true });
   for (const ent of entries) {
     if (ent.name.startsWith(".") || SKIP_DIRS.has(ent.name)) continue;
     const full = path.join(dir, ent.name);
-    if (ent.isDirectory()) {
-      await findIndexHtml(full, acc);
-    } else if (ent.isFile() && ent.name === "index.html") {
-      acc.push(full);
+    if (!ent.isDirectory()) continue;
+    if (ent.name === "dist") {
+      const children = await readdir(full, { withFileTypes: true });
+      for (const child of children) {
+        if (!child.isDirectory() || child.name.startsWith(".")) continue;
+        const html = path.join(full, child.name, "index.html");
+        try {
+          await access(html);
+          acc.push(html);
+        } catch {
+          // 子目录没有 index.html 时跳过
+        }
+      }
+      continue;
     }
+    await findIndexHtml(full, acc);
   }
 }
 
@@ -39,7 +51,7 @@ for (const ent of entries) {
 }
 
 if (htmlFiles.length === 0) {
-  console.error(`no index.html under subdirectories of ${root}`);
+  console.error(`no dist/*/index.html under ${root}`);
   process.exit(1);
 }
 

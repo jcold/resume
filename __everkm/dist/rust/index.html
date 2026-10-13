@@ -166,15 +166,36 @@
     .md > :first-child { margin-top: 0; }
     .md h1 {
       font-family: var(--serif); font-weight: 700; font-size: 3rem; line-height: 1.2;
-      letter-spacing: .12em; margin: 0 0 2px;
+      letter-spacing: .12em; margin: 0 0 8px;
     }
-    /* {.meta} and {.contact} share one row on wide screens; both are real text. */
-    .md > div { display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: 24px; }
-    .md > div > * { flex: 1 0 100%; min-width: 0; }
-    .md .meta,
-    .md .contact { flex: 0 1 auto; width: auto; margin: 0 0 14px; }
+    /* h1 and {.contact} share the first row, both starting from the left.
+       The spare column keeps the rest of the sheet full width. */
+    .md {
+      display: grid;
+      grid-template-columns: auto auto minmax(0, 1fr);
+      column-gap: 24px;
+      align-items: start;
+      justify-content: start;
+    }
+    .md > h1 {
+      grid-column: 1;
+      grid-row: 1;
+      align-self: last baseline;
+    }
+    .md > div { display: contents; }
+    .md > div > * { grid-column: 1 / -1; min-width: 0; }
+    .md .meta { margin: 0 0 14px; }
     .md .meta strong { color: var(--accent); font-weight: 500; letter-spacing: .08em; }
-    .md .contact { margin-left: auto; white-space: nowrap; }
+    .md .contact {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: last baseline;
+      justify-self: start;
+      width: auto;
+      margin: 0 0 8px;
+      text-align: left;
+      white-space: nowrap;
+    }
     .md .contact .copy {
       position: relative; font-weight: 400; cursor: pointer;
       padding: 0 3px; margin: 0 -3px; border-radius: 2px;
@@ -204,15 +225,9 @@
       font-weight: 400;
       white-space: nowrap;
     }
-    @media (max-width: 800px) {
-      .md .meta,
-      .md .contact { flex-basis: 100%; margin-left: 0; white-space: normal; }
-    }
-    /* A4 is under 800px, so the narrow-screen rule above also matches print. */
+    /* A4 print is under 800px, but the name and contact stay on one row. */
     @media print {
-      .md .meta,
-      .md .contact { flex-basis: auto; white-space: nowrap; }
-      .md .contact { margin-left: auto; }
+      .md .contact { white-space: nowrap; }
     }
     .md h3 { font-size: 1.45rem; font-weight: 700; margin: 14px 0 2px; }
     .md ul,
@@ -223,12 +238,19 @@
     .md hr { border: 0; border-top: 1px solid var(--rule); margin: 16px 0; }
     .md a { color: var(--accent); }
     @media (max-width: 480px) {
+      .md { grid-template-columns: 1fr; }
       .md h1 { font-size: 2.6rem; letter-spacing: .08em; }
+      .md .contact {
+        grid-column: 1;
+        grid-row: auto;
+        white-space: normal;
+        text-align: left;
+      }
     }
   
 </style><script>document.addEventListener('click',function(e){var el=e.target.closest('.contact .copy');if(!el||!navigator.clipboard)return;navigator.clipboard.writeText(el.textContent.trim()).then(function(){el.setAttribute('data-tip','已复制');setTimeout(function(){el.removeAttribute('data-tip');},1200);});});</script></head><body><div class="actions"><button onclick="window.print()" type="button">打印</button><a download="余广伟-rust.pdf" href="/rust/余广伟-rust.pdf">保存 PDF</a></div><main class="sheet"><div class="md"><h1>余广伟</h1><div>
-<p class="meta" data-extra="class"><strong>软件工程师｜产品与技术实践者</strong></p>
 <p class="contact" data-extra="class"><strong><span class="copy">18062116379</span></strong> · <strong><span class="copy">job@dayu.me</span></strong> · 武汉 · 1983年9月</p>
+<p class="meta" data-extra="class"><strong>软件工程师｜产品与技术实践者</strong></p>
 <p>长期从事软件研发，具有企业软件开发、技术方案设计和独立产品研发经历。近年主要围绕 Rust、Markdown 内容处理、桌面应用与数据管理开展实践，持续开发和维护自己的软件产品。</p>
 <p>关注从实际需求出发，选择合适的技术方案，将想法转化为可用、可维护的软件。既能参与具体模块开发，也能承担从需求梳理、技术设计到实现与发布的完整工作。</p>
 <p><strong>合作方式：</strong> 远程全职、远程兼职、项目合作</p>
@@ -283,4 +305,4 @@
 <p>希望参与重视实际问题、工程质量和长期维护的远程团队或项目。</p>
 <p>可根据项目需要，参与 Rust 后端开发、内容处理工具、桌面应用研发，以及现有软件的维护、改造与功能扩展。</p>
 <p>接受远程全职、兼职及项目合作，具体职责与交付范围可根据实际需求协商。</p>
-</div></div></main><nav hidden=""><a href="/rust/index.html">余广伟</a></nav></body></html>
+</div></div></main><nav hidden=""><a href="/rust/index.html">余广伟</a><a href="/app/index.html">余广伟</a></nav></body></html>
