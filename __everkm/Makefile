@@ -21,3 +21,6 @@ build: theme
 # 只打印 dist/<side>/index.html（对应仓库根下 */index.md），输出到同目录：余广伟-{目录名}.pdf
 pdf:
 	PLAYWRIGHT="$(PLAYWRIGHT)" node scripts/print-pdf.mjs "$(abspath ..)"
+
+clean-dist:
+	rm -rf dist
